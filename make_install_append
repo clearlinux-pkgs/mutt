@@ -1,0 +1,1 @@
+ln -s mutt %{buildroot}%{_bindir}/mail
