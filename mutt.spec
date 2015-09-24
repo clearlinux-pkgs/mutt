@@ -4,7 +4,7 @@
 #
 Name     : mutt
 Version  : 1.5.24
-Release  : 6
+Release  : 7
 URL      : http://fossies.org/linux/misc/mutt-1.5.24.tar.gz
 Source0  : http://fossies.org/linux/misc/mutt-1.5.24.tar.gz
 Summary  : No detailed summary available
