@@ -4,7 +4,7 @@
 #
 Name     : mutt
 Version  : 1.6.0
-Release  : 9
+Release  : 10
 URL      : http://fossies.org/linux/misc/mutt-1.6.0.tar.gz
 Source0  : http://fossies.org/linux/misc/mutt-1.6.0.tar.gz
 Summary  : No detailed summary available
@@ -14,6 +14,10 @@ Requires: mutt-bin
 Requires: mutt-doc
 Requires: mutt-locales
 BuildRequires : bison
+BuildRequires : gdb
+BuildRequires : gnupg
+BuildRequires : idna
+BuildRequires : libidn-dev
 BuildRequires : ncurses-dev
 
 %description
