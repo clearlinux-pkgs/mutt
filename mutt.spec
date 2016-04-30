@@ -4,7 +4,7 @@
 #
 Name     : mutt
 Version  : 1.6.0
-Release  : 11
+Release  : 12
 URL      : http://fossies.org/linux/misc/mutt-1.6.0.tar.gz
 Source0  : http://fossies.org/linux/misc/mutt-1.6.0.tar.gz
 Summary  : No detailed summary available
