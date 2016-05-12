@@ -4,7 +4,7 @@
 #
 Name     : mutt
 Version  : 1.6.1
-Release  : 13
+Release  : 14
 URL      : http://fossies.org/linux/misc/mutt-1.6.1.tar.gz
 Source0  : http://fossies.org/linux/misc/mutt-1.6.1.tar.gz
 Summary  : No detailed summary available
@@ -17,8 +17,11 @@ BuildRequires : bison
 BuildRequires : gdb
 BuildRequires : gnupg
 BuildRequires : idna
+BuildRequires : krb5-dev
 BuildRequires : libidn-dev
 BuildRequires : ncurses-dev
+BuildRequires : pkgconfig(com_err)
+BuildRequires : pkgconfig(gnutls)
 
 %description
 ===================
@@ -54,7 +57,7 @@ locales components for the mutt package.
 %setup -q -n mutt-1.6.1
 
 %build
-%configure --disable-static --with-mailpath=/var/spool/mail/
+%configure --disable-static --with-mailpath=/var/spool/mail/ --enable-imap --enable-pop --enable-smtp --with-gss --with-gnutls
 make V=1  %{?_smp_mflags}
 
 %check

@@ -1,1 +1,1 @@
---with-mailpath=/var/spool/mail/
+--with-mailpath=/var/spool/mail/ --enable-imap --enable-pop --enable-smtp --with-gss --with-gnutls

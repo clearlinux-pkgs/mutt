@@ -1,4 +1,6 @@
 libc.so.6
+libgnutls.so.30
+libgssapi_krb5.so.2
 libidn.so.11
 libncursesw.so.6
 libtinfow.so.6
