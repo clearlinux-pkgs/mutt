@@ -1,5 +1,5 @@
 PKG_NAME := mutt
-URL := http://fossies.org/linux/misc/mutt-1.7.2.tar.gz
+URL := ftp://ftp.mutt.org/pub/mutt/mutt-1.8.0.tar.gz
 
 
 include ../common/Makefile.common
