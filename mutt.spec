@@ -6,7 +6,7 @@
 #
 Name     : mutt
 Version  : 1.8.0
-Release  : 19
+Release  : 20
 URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.8.0.tar.gz
 Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.8.0.tar.gz
 Source99 : ftp://ftp.mutt.org/pub/mutt/mutt-1.8.0.tar.gz.asc
@@ -61,7 +61,7 @@ locales components for the mutt package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1487982220
+export SOURCE_DATE_EPOCH=1492173232
 %configure --disable-static --with-mailpath=/var/spool/mail/ --enable-imap --enable-pop --enable-smtp --with-gss --with-gnutls
 make V=1  %{?_smp_mflags}
 
@@ -73,7 +73,7 @@ export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1487982220
+export SOURCE_DATE_EPOCH=1492173232
 rm -rf %{buildroot}
 %make_install
 %find_lang mutt
