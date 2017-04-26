@@ -6,7 +6,7 @@
 #
 Name     : mutt
 Version  : 1.8.2
-Release  : 24
+Release  : 25
 URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.8.2.tar.gz
 Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.8.2.tar.gz
 Source99 : ftp://ftp.mutt.org/pub/mutt/mutt-1.8.2.tar.gz.asc
@@ -65,8 +65,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1493055027
-%configure --disable-static --with-mailpath=/var/spool/mail/ --enable-imap --enable-pop --enable-smtp --with-gss --with-gnutlsl --enable-sidebar --enable-hcache
+export SOURCE_DATE_EPOCH=1493219205
+%configure --disable-static --with-mailpath=/var/spool/mail/ --enable-imap --enable-pop --enable-smtp --with-gss --with-gnutls --enable-sidebar --enable-hcache
 make V=1  %{?_smp_mflags}
 
 %check
@@ -77,7 +77,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1493055027
+export SOURCE_DATE_EPOCH=1493219205
 rm -rf %{buildroot}
 %make_install
 %find_lang mutt
