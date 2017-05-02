@@ -6,7 +6,7 @@
 #
 Name     : mutt
 Version  : 1.8.2
-Release  : 25
+Release  : 26
 URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.8.2.tar.gz
 Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.8.2.tar.gz
 Source99 : ftp://ftp.mutt.org/pub/mutt/mutt-1.8.2.tar.gz.asc
