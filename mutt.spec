@@ -6,7 +6,7 @@
 #
 Name     : mutt
 Version  : 1.9.1
-Release  : 29
+Release  : 30
 URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.9.1.tar.gz
 Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.9.1.tar.gz
 Source99 : ftp://ftp.mutt.org/pub/mutt/mutt-1.9.1.tar.gz.asc
@@ -49,6 +49,14 @@ Group: Documentation
 doc components for the mutt package.
 
 
+%package extras
+Summary: extras components for the mutt package.
+Group: Default
+
+%description extras
+extras components for the mutt package.
+
+
 %package locales
 Summary: locales components for the mutt package.
 Group: Default
@@ -65,7 +73,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1506216104
+export SOURCE_DATE_EPOCH=1507391230
 %configure --disable-static --with-mailpath=/var/spool/mail/ --enable-imap --enable-pop --enable-smtp --with-gss --with-gnutls --enable-sidebar --enable-hcache
 make V=1  %{?_smp_mflags}
 
@@ -77,7 +85,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1506216104
+export SOURCE_DATE_EPOCH=1507391230
 rm -rf %{buildroot}
 %make_install
 %find_lang mutt
@@ -90,19 +98,23 @@ ln -s mutt %{buildroot}%{_bindir}/mail
 
 %files bin
 %defattr(-,root,root,-)
+%exclude /usr/bin/smime_keys
 /usr/bin/flea
 /usr/bin/mail
 /usr/bin/mutt
 /usr/bin/muttbug
 /usr/bin/pgpewrap
 /usr/bin/pgpring
-/usr/bin/smime_keys
 
 %files doc
 %defattr(-,root,root,-)
 %doc /usr/share/doc/mutt/*
 %doc /usr/share/man/man1/*
 %doc /usr/share/man/man5/*
+
+%files extras
+%defattr(-,root,root,-)
+/usr/bin/smime_keys
 
 %files locales -f mutt.lang
 %defattr(-,root,root,-)
