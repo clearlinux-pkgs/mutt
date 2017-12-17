@@ -4,4 +4,4 @@ gnupg
 gdb
 libidn-dev
 idna
-pkgconfig(tokyocabinet)
+gdbm

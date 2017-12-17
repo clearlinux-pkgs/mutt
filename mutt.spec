@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xADEF768480316BDA (kevin@8t8.us)
 #
 Name     : mutt
-Version  : 1.9.1
-Release  : 31
-URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.9.1.tar.gz
-Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.9.1.tar.gz
-Source99 : ftp://ftp.mutt.org/pub/mutt/mutt-1.9.1.tar.gz.asc
+Version  : 1.9.2
+Release  : 33
+URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.9.2.tar.gz
+Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.9.2.tar.gz
+Source99 : ftp://ftp.mutt.org/pub/mutt/mutt-1.9.2.tar.gz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -18,6 +18,7 @@ Requires: mutt-doc
 Requires: mutt-locales
 BuildRequires : bison
 BuildRequires : gdb
+BuildRequires : gdbm
 BuildRequires : gnupg
 BuildRequires : idna
 BuildRequires : krb5-dev
@@ -66,16 +67,16 @@ locales components for the mutt package.
 
 
 %prep
-%setup -q -n mutt-1.9.1
+%setup -q -n mutt-1.9.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1507391230
+export SOURCE_DATE_EPOCH=1513524966
 %configure --disable-static --with-mailpath=/var/spool/mail/ --enable-imap --enable-pop --enable-smtp --with-gss --with-gnutls --enable-sidebar --enable-hcache
-make V=1  %{?_smp_mflags}
+make  %{?_smp_mflags}
 
 %check
 export LANG=C
@@ -85,7 +86,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1507391230
+export SOURCE_DATE_EPOCH=1513524966
 rm -rf %{buildroot}
 %make_install
 %find_lang mutt
