@@ -6,7 +6,7 @@
 #
 Name     : mutt
 Version  : 1.9.3
-Release  : 34
+Release  : 35
 URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.9.3.tar.gz
 Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.9.3.tar.gz
 Source99 : ftp://ftp.mutt.org/pub/mutt/mutt-1.9.3.tar.gz.asc
