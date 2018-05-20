@@ -5,17 +5,17 @@
 # Source0 file verified with key 0xADEF768480316BDA (kevin@8t8.us)
 #
 Name     : mutt
-Version  : 1.9.5
-Release  : 38
-URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.9.5.tar.gz
-Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.9.5.tar.gz
-Source99 : ftp://ftp.mutt.org/pub/mutt/mutt-1.9.5.tar.gz.asc
+Version  : 1.10.0
+Release  : 39
+URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.10.0.tar.gz
+Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.10.0.tar.gz
+Source99 : ftp://ftp.mutt.org/pub/mutt/mutt-1.10.0.tar.gz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: mutt-bin
-Requires: mutt-doc
 Requires: mutt-locales
+Requires: mutt-man
 BuildRequires : bison
 BuildRequires : gdb
 BuildRequires : gdbm
@@ -37,6 +37,7 @@ between mutt-1.2 and mutt-1.4 are listed in NEWS.
 %package bin
 Summary: bin components for the mutt package.
 Group: Binaries
+Requires: mutt-man
 
 %description bin
 bin components for the mutt package.
@@ -45,6 +46,7 @@ bin components for the mutt package.
 %package doc
 Summary: doc components for the mutt package.
 Group: Documentation
+Requires: mutt-man
 
 %description doc
 doc components for the mutt package.
@@ -66,15 +68,23 @@ Group: Default
 locales components for the mutt package.
 
 
+%package man
+Summary: man components for the mutt package.
+Group: Default
+
+%description man
+man components for the mutt package.
+
+
 %prep
-%setup -q -n mutt-1.9.5
+%setup -q -n mutt-1.10.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523741754
+export SOURCE_DATE_EPOCH=1526782282
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -90,7 +100,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1523741754
+export SOURCE_DATE_EPOCH=1526782282
 rm -rf %{buildroot}
 %make_install
 %find_lang mutt
@@ -114,12 +124,20 @@ ln -s mutt %{buildroot}%{_bindir}/mail
 %files doc
 %defattr(-,root,root,-)
 %doc /usr/share/doc/mutt/*
-%doc /usr/share/man/man1/*
-%doc /usr/share/man/man5/*
 
 %files extras
 %defattr(-,root,root,-)
 /usr/bin/smime_keys
+
+%files man
+%defattr(-,root,root,-)
+/usr/share/man/man1/mutt.1
+/usr/share/man/man1/pgpewrap.1
+/usr/share/man/man1/pgpring.1
+/usr/share/man/man1/smime_keys.1
+/usr/share/man/man5/mbox.5
+/usr/share/man/man5/mmdf.5
+/usr/share/man/man5/muttrc.5
 
 %files locales -f mutt.lang
 %defattr(-,root,root,-)
