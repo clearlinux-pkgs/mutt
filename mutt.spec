@@ -5,15 +5,16 @@
 # Source0 file verified with key 0xADEF768480316BDA (kevin@8t8.us)
 #
 Name     : mutt
-Version  : 1.10.0
-Release  : 39
-URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.10.0.tar.gz
-Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.10.0.tar.gz
-Source99 : ftp://ftp.mutt.org/pub/mutt/mutt-1.10.0.tar.gz.asc
+Version  : 1.10.1
+Release  : 40
+URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.10.1.tar.gz
+Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.10.1.tar.gz
+Source99 : ftp://ftp.mutt.org/pub/mutt/mutt-1.10.1.tar.gz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: mutt-bin
+Requires: mutt-license
 Requires: mutt-locales
 Requires: mutt-man
 BuildRequires : bison
@@ -37,6 +38,7 @@ between mutt-1.2 and mutt-1.4 are listed in NEWS.
 %package bin
 Summary: bin components for the mutt package.
 Group: Binaries
+Requires: mutt-license
 Requires: mutt-man
 
 %description bin
@@ -60,6 +62,14 @@ Group: Default
 extras components for the mutt package.
 
 
+%package license
+Summary: license components for the mutt package.
+Group: Default
+
+%description license
+license components for the mutt package.
+
+
 %package locales
 Summary: locales components for the mutt package.
 Group: Default
@@ -77,14 +87,14 @@ man components for the mutt package.
 
 
 %prep
-%setup -q -n mutt-1.10.0
+%setup -q -n mutt-1.10.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1526782282
+export SOURCE_DATE_EPOCH=1531794285
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -100,8 +110,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1526782282
+export SOURCE_DATE_EPOCH=1531794285
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/mutt
+cp COPYRIGHT %{buildroot}/usr/share/doc/mutt/COPYRIGHT
 %make_install
 %find_lang mutt
 ## make_install_append content
@@ -122,12 +134,17 @@ ln -s mutt %{buildroot}%{_bindir}/mail
 /usr/bin/pgpring
 
 %files doc
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 %doc /usr/share/doc/mutt/*
 
 %files extras
 %defattr(-,root,root,-)
 /usr/bin/smime_keys
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/mutt/COPYRIGHT
+/usr/share/doc/mutt/GPL
 
 %files man
 %defattr(-,root,root,-)
