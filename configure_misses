@@ -21,3 +21,4 @@ Configure miss: idna_to_unicode_utf8_from_utf8
 Configure miss: idna_to_ascii_from_utf8
 Configure miss: idna_to_ascii_from_locale
 Configure miss: ospcat
+Configure miss: docbook2x-texi
