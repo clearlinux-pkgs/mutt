@@ -5,3 +5,4 @@ gdb
 libidn-dev
 idna
 gdbm
+cyrus-sasl-dev

@@ -6,7 +6,7 @@
 #
 Name     : mutt
 Version  : 1.11.1
-Release  : 41
+Release  : 42
 URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.11.1.tar.gz
 Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.11.1.tar.gz
 Source99 : ftp://ftp.mutt.org/pub/mutt/mutt-1.11.1.tar.gz.asc
@@ -18,6 +18,7 @@ Requires: mutt-license = %{version}-%{release}
 Requires: mutt-locales = %{version}-%{release}
 Requires: mutt-man = %{version}-%{release}
 BuildRequires : bison
+BuildRequires : cyrus-sasl-dev
 BuildRequires : gdb
 BuildRequires : gdbm
 BuildRequires : gnupg
@@ -92,12 +93,20 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1543853645
+export SOURCE_DATE_EPOCH=1544564646
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-%configure --disable-static --with-mailpath=/var/spool/mail/ --enable-imap --enable-pop --enable-smtp --with-gss --with-gnutls --enable-sidebar --enable-hcache
+%configure --disable-static --with-mailpath=/var/spool/mail/ \
+--enable-imap \
+--enable-pop \
+--enable-smtp \
+--with-gss \
+--with-gnutls \
+--with-sasl \
+--enable-sidebar \
+--enable-hcache
 make  %{?_smp_mflags}
 
 %check
@@ -108,7 +117,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1543853645
+export SOURCE_DATE_EPOCH=1544564646
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mutt
 cp COPYRIGHT %{buildroot}/usr/share/package-licenses/mutt/COPYRIGHT
