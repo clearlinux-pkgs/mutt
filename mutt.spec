@@ -6,7 +6,7 @@
 #
 Name     : mutt
 Version  : 1.11.1
-Release  : 42
+Release  : 43
 URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.11.1.tar.gz
 Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.11.1.tar.gz
 Source99 : ftp://ftp.mutt.org/pub/mutt/mutt-1.11.1.tar.gz.asc
@@ -93,7 +93,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1544564646
+export SOURCE_DATE_EPOCH=1544808624
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -106,7 +106,8 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semanti
 --with-gnutls \
 --with-sasl \
 --enable-sidebar \
---enable-hcache
+--enable-hcache \
+--enable-debug
 make  %{?_smp_mflags}
 
 %check
@@ -117,7 +118,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1544564646
+export SOURCE_DATE_EPOCH=1544808624
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mutt
 cp COPYRIGHT %{buildroot}/usr/share/package-licenses/mutt/COPYRIGHT
