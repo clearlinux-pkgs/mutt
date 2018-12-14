@@ -7,3 +7,4 @@
 --with-sasl
 --enable-sidebar
 --enable-hcache
+--enable-debug
