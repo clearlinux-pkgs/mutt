@@ -5,16 +5,15 @@
 # Source0 file verified with key 0xADEF768480316BDA (kevin@8t8.us)
 #
 Name     : mutt
-Version  : 1.11.1
-Release  : 43
-URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.11.1.tar.gz
-Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.11.1.tar.gz
-Source99 : ftp://ftp.mutt.org/pub/mutt/mutt-1.11.1.tar.gz.asc
-Summary  : No detailed summary available
+Version  : 1.11.2
+Release  : 44
+URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.11.2.tar.gz
+Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.11.2.tar.gz
+Source99 : ftp://ftp.mutt.org/pub/mutt/mutt-1.11.2.tar.gz.asc
+Summary  : Small but very powerful text-based mail client
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: mutt-bin = %{version}-%{release}
-Requires: mutt-license = %{version}-%{release}
 Requires: mutt-locales = %{version}-%{release}
 Requires: mutt-man = %{version}-%{release}
 BuildRequires : bison
@@ -31,13 +30,15 @@ BuildRequires : pkgconfig(gnutls)
 BuildRequires : pkgconfig(tokyocabinet)
 
 %description
-When updating mutt from an earlier release or from Git, please
-make sure to read the compatibility notes in ``UPDATING''.
+IMAP in mutt should be considered beta quality. For the most part it
+works well, but it is still not quite as stable or as full-featured
+as some of the other drivers. I believe it is now acceptable for
+daily use (and that's how I use it now, currently against Cyrus 1.6.24 and
+previously against UW-IMAP 4.7 and 2000).
 
 %package bin
 Summary: bin components for the mutt package.
 Group: Binaries
-Requires: mutt-license = %{version}-%{release}
 Requires: mutt-man = %{version}-%{release}
 
 %description bin
@@ -61,14 +62,6 @@ Group: Default
 extras components for the mutt package.
 
 
-%package license
-Summary: license components for the mutt package.
-Group: Default
-
-%description license
-license components for the mutt package.
-
-
 %package locales
 Summary: locales components for the mutt package.
 Group: Default
@@ -86,14 +79,14 @@ man components for the mutt package.
 
 
 %prep
-%setup -q -n mutt-1.11.1
+%setup -q -n mutt-1.11.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1544808624
+export SOURCE_DATE_EPOCH=1546979985
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -118,10 +111,8 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1544808624
+export SOURCE_DATE_EPOCH=1546979985
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/package-licenses/mutt
-cp COPYRIGHT %{buildroot}/usr/share/package-licenses/mutt/COPYRIGHT
 %make_install
 %find_lang mutt
 ## install_append content
@@ -149,10 +140,6 @@ ln -s mutt %{buildroot}%{_bindir}/mail
 %files extras
 %defattr(-,root,root,-)
 /usr/bin/smime_keys
-
-%files license
-%defattr(0644,root,root,0755)
-/usr/share/package-licenses/mutt/COPYRIGHT
 
 %files man
 %defattr(0644,root,root,0755)
