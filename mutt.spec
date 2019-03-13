@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xADEF768480316BDA (kevin@8t8.us)
 #
 Name     : mutt
-Version  : 1.11.3
-Release  : 45
-URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.11.3.tar.gz
-Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.11.3.tar.gz
-Source99 : ftp://ftp.mutt.org/pub/mutt/mutt-1.11.3.tar.gz.asc
+Version  : 1.11.4
+Release  : 46
+URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.11.4.tar.gz
+Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.11.4.tar.gz
+Source99 : ftp://ftp.mutt.org/pub/mutt/mutt-1.11.4.tar.gz.asc
 Summary  : Small but very powerful text-based mail client
 Group    : Development/Tools
 License  : GPL-2.0
@@ -39,7 +39,6 @@ previously against UW-IMAP 4.7 and 2000).
 %package bin
 Summary: bin components for the mutt package.
 Group: Binaries
-Requires: mutt-man = %{version}-%{release}
 
 %description bin
 bin components for the mutt package.
@@ -79,14 +78,15 @@ man components for the mutt package.
 
 
 %prep
-%setup -q -n mutt-1.11.3
+%setup -q -n mutt-1.11.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549122879
+export SOURCE_DATE_EPOCH=1552488154
+export LDFLAGS="${LDFLAGS} -fno-lto"
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
@@ -111,7 +111,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1549122879
+export SOURCE_DATE_EPOCH=1552488154
 rm -rf %{buildroot}
 %make_install
 %find_lang mutt
