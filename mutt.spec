@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xADEF768480316BDA (kevin@8t8.us)
 #
 Name     : mutt
-Version  : 1.12.0
-Release  : 47
-URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.0.tar.gz
-Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.0.tar.gz
-Source99 : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.0.tar.gz.asc
+Version  : 1.12.1
+Release  : 48
+URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.1.tar.gz
+Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.1.tar.gz
+Source99 : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.1.tar.gz.asc
 Summary  : Small but very powerful text-based mail client
 Group    : Development/Tools
 License  : GPL-2.0
@@ -78,14 +78,14 @@ man components for the mutt package.
 
 
 %prep
-%setup -q -n mutt-1.12.0
+%setup -q -n mutt-1.12.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1558942747
+export SOURCE_DATE_EPOCH=1560617735
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -113,7 +113,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1558942747
+export SOURCE_DATE_EPOCH=1560617735
 rm -rf %{buildroot}
 %make_install
 %find_lang mutt
