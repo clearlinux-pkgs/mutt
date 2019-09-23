@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xADEF768480316BDA (kevin@8t8.us)
 #
 Name     : mutt
-Version  : 1.12.1
-Release  : 48
-URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.1.tar.gz
-Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.1.tar.gz
-Source99 : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.1.tar.gz.asc
+Version  : 1.12.2
+Release  : 49
+URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.2.tar.gz
+Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.2.tar.gz
+Source1 : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.2.tar.gz.asc
 Summary  : Small but very powerful text-based mail client
 Group    : Development/Tools
 License  : GPL-2.0
@@ -78,14 +78,16 @@ man components for the mutt package.
 
 
 %prep
-%setup -q -n mutt-1.12.1
+%setup -q -n mutt-1.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1560617735
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1569253066
+# -Werror is for werrorists
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -106,14 +108,14 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -f
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1560617735
+export SOURCE_DATE_EPOCH=1569253066
 rm -rf %{buildroot}
 %make_install
 %find_lang mutt
@@ -126,7 +128,6 @@ ln -s mutt %{buildroot}%{_bindir}/mail
 
 %files bin
 %defattr(-,root,root,-)
-%exclude /usr/bin/smime_keys
 /usr/bin/flea
 /usr/bin/mail
 /usr/bin/mutt
