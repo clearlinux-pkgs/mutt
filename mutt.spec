@@ -6,7 +6,7 @@
 #
 Name     : mutt
 Version  : 1.12.2
-Release  : 49
+Release  : 50
 URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.2.tar.gz
 Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.2.tar.gz
 Source1 : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.2.tar.gz.asc
@@ -85,7 +85,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569253066
+export SOURCE_DATE_EPOCH=1569256016
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
@@ -115,7 +115,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1569253066
+export SOURCE_DATE_EPOCH=1569256016
 rm -rf %{buildroot}
 %make_install
 %find_lang mutt
