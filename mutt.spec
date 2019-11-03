@@ -6,7 +6,7 @@
 #
 Name     : mutt
 Version  : 1.12.2
-Release  : 50
+Release  : 51
 URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.2.tar.gz
 Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.2.tar.gz
 Source1 : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.2.tar.gz.asc
