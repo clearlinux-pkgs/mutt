@@ -6,14 +6,15 @@
 #
 Name     : mutt
 Version  : 1.12.2
-Release  : 51
+Release  : 52
 URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.2.tar.gz
 Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.2.tar.gz
 Source1 : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.2.tar.gz.asc
-Summary  : Small but very powerful text-based mail client
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: mutt-bin = %{version}-%{release}
+Requires: mutt-info = %{version}-%{release}
 Requires: mutt-locales = %{version}-%{release}
 Requires: mutt-man = %{version}-%{release}
 BuildRequires : bison
@@ -30,11 +31,8 @@ BuildRequires : pkgconfig(gnutls)
 BuildRequires : pkgconfig(tokyocabinet)
 
 %description
-IMAP in mutt should be considered beta quality. For the most part it
-works well, but it is still not quite as stable or as full-featured
-as some of the other drivers. I believe it is now acceptable for
-daily use (and that's how I use it now, currently against Cyrus 1.6.24 and
-previously against UW-IMAP 4.7 and 2000).
+When updating mutt from an earlier release or from Git, please
+make sure to read the compatibility notes in ``UPDATING''.
 
 %package bin
 Summary: bin components for the mutt package.
@@ -48,6 +46,7 @@ bin components for the mutt package.
 Summary: doc components for the mutt package.
 Group: Documentation
 Requires: mutt-man = %{version}-%{release}
+Requires: mutt-info = %{version}-%{release}
 
 %description doc
 doc components for the mutt package.
@@ -59,6 +58,14 @@ Group: Default
 
 %description extras
 extras components for the mutt package.
+
+
+%package info
+Summary: info components for the mutt package.
+Group: Default
+
+%description info
+info components for the mutt package.
 
 
 %package locales
@@ -79,14 +86,14 @@ man components for the mutt package.
 
 %prep
 %setup -q -n mutt-1.12.2
+cd %{_builddir}/mutt-1.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569256016
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1573790212
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -115,7 +122,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1569256016
+export SOURCE_DATE_EPOCH=1573790212
 rm -rf %{buildroot}
 %make_install
 %find_lang mutt
@@ -138,11 +145,14 @@ ln -s mutt %{buildroot}%{_bindir}/mail
 %files doc
 %defattr(0644,root,root,0755)
 %doc /usr/share/doc/mutt/*
-%doc /usr/share/info/*
 
 %files extras
 %defattr(-,root,root,-)
 /usr/bin/smime_keys
+
+%files info
+%defattr(0644,root,root,0755)
+/usr/share/info/mutt.info
 
 %files man
 %defattr(0644,root,root,0755)
