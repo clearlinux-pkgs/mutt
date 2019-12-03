@@ -5,16 +5,17 @@
 # Source0 file verified with key 0xADEF768480316BDA (kevin@8t8.us)
 #
 Name     : mutt
-Version  : 1.12.2
-Release  : 52
-URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.2.tar.gz
-Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.2.tar.gz
-Source1 : ftp://ftp.mutt.org/pub/mutt/mutt-1.12.2.tar.gz.asc
-Summary  : No detailed summary available
+Version  : 1.13.0
+Release  : 53
+URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.13.0.tar.gz
+Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.13.0.tar.gz
+Source1 : ftp://ftp.mutt.org/pub/mutt/mutt-1.13.0.tar.gz.asc
+Summary  : Small but very powerful text-based mail client
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: mutt-bin = %{version}-%{release}
 Requires: mutt-info = %{version}-%{release}
+Requires: mutt-license = %{version}-%{release}
 Requires: mutt-locales = %{version}-%{release}
 Requires: mutt-man = %{version}-%{release}
 BuildRequires : bison
@@ -28,15 +29,20 @@ BuildRequires : libidn-dev
 BuildRequires : ncurses-dev
 BuildRequires : pkgconfig(com_err)
 BuildRequires : pkgconfig(gnutls)
+BuildRequires : pkgconfig(ncursesw)
 BuildRequires : pkgconfig(tokyocabinet)
 
 %description
-When updating mutt from an earlier release or from Git, please
-make sure to read the compatibility notes in ``UPDATING''.
+IMAP in mutt should be considered beta quality. For the most part it
+works well, but it is still not quite as stable or as full-featured
+as some of the other drivers. I believe it is now acceptable for
+daily use (and that's how I use it now, currently against Cyrus 1.6.24 and
+previously against UW-IMAP 4.7 and 2000).
 
 %package bin
 Summary: bin components for the mutt package.
 Group: Binaries
+Requires: mutt-license = %{version}-%{release}
 
 %description bin
 bin components for the mutt package.
@@ -68,6 +74,14 @@ Group: Default
 info components for the mutt package.
 
 
+%package license
+Summary: license components for the mutt package.
+Group: Default
+
+%description license
+license components for the mutt package.
+
+
 %package locales
 Summary: locales components for the mutt package.
 Group: Default
@@ -85,15 +99,16 @@ man components for the mutt package.
 
 
 %prep
-%setup -q -n mutt-1.12.2
-cd %{_builddir}/mutt-1.12.2
+%setup -q -n mutt-1.13.0
+cd %{_builddir}/mutt-1.13.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1573790212
+export SOURCE_DATE_EPOCH=1575384031
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -122,8 +137,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1573790212
+export SOURCE_DATE_EPOCH=1575384031
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/mutt
+cp %{_builddir}/mutt-1.13.0/COPYRIGHT %{buildroot}/usr/share/package-licenses/mutt/657ebac1276bc5fd02f614bad51af742976ea329
 %make_install
 %find_lang mutt
 ## install_append content
@@ -153,6 +170,10 @@ ln -s mutt %{buildroot}%{_bindir}/mail
 %files info
 %defattr(0644,root,root,0755)
 /usr/share/info/mutt.info
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/mutt/657ebac1276bc5fd02f614bad51af742976ea329
 
 %files man
 %defattr(0644,root,root,0755)
