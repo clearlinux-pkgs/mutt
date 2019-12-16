@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xADEF768480316BDA (kevin@8t8.us)
 #
 Name     : mutt
-Version  : 1.13.0
-Release  : 53
-URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.13.0.tar.gz
-Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.13.0.tar.gz
-Source1 : ftp://ftp.mutt.org/pub/mutt/mutt-1.13.0.tar.gz.asc
+Version  : 1.13.1
+Release  : 54
+URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.13.1.tar.gz
+Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.13.1.tar.gz
+Source1  : ftp://ftp.mutt.org/pub/mutt/mutt-1.13.1.tar.gz.asc
 Summary  : Small but very powerful text-based mail client
 Group    : Development/Tools
 License  : GPL-2.0
@@ -29,7 +29,6 @@ BuildRequires : libidn-dev
 BuildRequires : ncurses-dev
 BuildRequires : pkgconfig(com_err)
 BuildRequires : pkgconfig(gnutls)
-BuildRequires : pkgconfig(ncursesw)
 BuildRequires : pkgconfig(tokyocabinet)
 
 %description
@@ -99,15 +98,15 @@ man components for the mutt package.
 
 
 %prep
-%setup -q -n mutt-1.13.0
-cd %{_builddir}/mutt-1.13.0
+%setup -q -n mutt-1.13.1
+cd %{_builddir}/mutt-1.13.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1575384031
+export SOURCE_DATE_EPOCH=1576522408
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
@@ -137,10 +136,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1575384031
+export SOURCE_DATE_EPOCH=1576522408
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mutt
-cp %{_builddir}/mutt-1.13.0/COPYRIGHT %{buildroot}/usr/share/package-licenses/mutt/657ebac1276bc5fd02f614bad51af742976ea329
+cp %{_builddir}/mutt-1.13.1/COPYRIGHT %{buildroot}/usr/share/package-licenses/mutt/657ebac1276bc5fd02f614bad51af742976ea329
 %make_install
 %find_lang mutt
 ## install_append content
