@@ -1,5 +1,4 @@
-1.13.2
+1.13.3
 bison
 krb5-dev
 ncurses-dev
-pkgconfig(ncursesw)
