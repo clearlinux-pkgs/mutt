@@ -1,5 +1,5 @@
 PKG_NAME := mutt
-URL = ftp://ftp.mutt.org/pub/mutt/mutt-1.13.3.tar.gz
+URL = ftp://ftp.mutt.org/pub/mutt/mutt-1.13.4.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
