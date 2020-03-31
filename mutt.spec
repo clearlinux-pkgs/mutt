@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xADEF768480316BDA (kevin@8t8.us)
 #
 Name     : mutt
-Version  : 1.13.4
-Release  : 57
-URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.13.4.tar.gz
-Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.13.4.tar.gz
-Source1  : ftp://ftp.mutt.org/pub/mutt/mutt-1.13.4.tar.gz.asc
-Summary  : Small but very powerful text-based mail client
+Version  : 1.13.5
+Release  : 58
+URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.13.5.tar.gz
+Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.13.5.tar.gz
+Source1  : ftp://ftp.mutt.org/pub/mutt/mutt-1.13.5.tar.gz.asc
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: mutt-bin = %{version}-%{release}
@@ -32,11 +32,8 @@ BuildRequires : pkgconfig(gnutls)
 BuildRequires : pkgconfig(tokyocabinet)
 
 %description
-IMAP in mutt should be considered beta quality. For the most part it
-works well, but it is still not quite as stable or as full-featured
-as some of the other drivers. I believe it is now acceptable for
-daily use (and that's how I use it now, currently against Cyrus 1.6.24 and
-previously against UW-IMAP 4.7 and 2000).
+When updating mutt from an earlier release or from Git, please
+make sure to read the compatibility notes in ``UPDATING''.
 
 %package bin
 Summary: bin components for the mutt package.
@@ -98,16 +95,15 @@ man components for the mutt package.
 
 
 %prep
-%setup -q -n mutt-1.13.4
-cd %{_builddir}/mutt-1.13.4
+%setup -q -n mutt-1.13.5
+cd %{_builddir}/mutt-1.13.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1581990999
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1585617744
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -136,10 +132,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1581990999
+export SOURCE_DATE_EPOCH=1585617744
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mutt
-cp %{_builddir}/mutt-1.13.4/COPYRIGHT %{buildroot}/usr/share/package-licenses/mutt/9a05e4157c80d693ee0e8b9427a3b5c3176ed697
+cp %{_builddir}/mutt-1.13.5/COPYRIGHT %{buildroot}/usr/share/package-licenses/mutt/9a05e4157c80d693ee0e8b9427a3b5c3176ed697
 %make_install
 %find_lang mutt
 ## install_append content
