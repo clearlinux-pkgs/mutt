@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xADEF768480316BDA (kevin@8t8.us)
 #
 Name     : mutt
-Version  : 1.13.5
-Release  : 58
-URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.13.5.tar.gz
-Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.13.5.tar.gz
-Source1  : ftp://ftp.mutt.org/pub/mutt/mutt-1.13.5.tar.gz.asc
+Version  : 1.14.0
+Release  : 59
+URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.14.0.tar.gz
+Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.14.0.tar.gz
+Source1  : ftp://ftp.mutt.org/pub/mutt/mutt-1.14.0.tar.gz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -30,6 +30,7 @@ BuildRequires : ncurses-dev
 BuildRequires : pkgconfig(com_err)
 BuildRequires : pkgconfig(gnutls)
 BuildRequires : pkgconfig(tokyocabinet)
+BuildRequires : pkgconfig(zlib)
 
 %description
 When updating mutt from an earlier release or from Git, please
@@ -95,22 +96,22 @@ man components for the mutt package.
 
 
 %prep
-%setup -q -n mutt-1.13.5
-cd %{_builddir}/mutt-1.13.5
+%setup -q -n mutt-1.14.0
+cd %{_builddir}/mutt-1.14.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1585617744
+export SOURCE_DATE_EPOCH=1588630983
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
-export FFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FCFLAGS="$FFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
+export FFLAGS="$FFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math "
 %configure --disable-static --with-mailpath=/var/spool/mail/ \
 --enable-imap \
@@ -132,10 +133,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1585617744
+export SOURCE_DATE_EPOCH=1588630983
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mutt
-cp %{_builddir}/mutt-1.13.5/COPYRIGHT %{buildroot}/usr/share/package-licenses/mutt/9a05e4157c80d693ee0e8b9427a3b5c3176ed697
+cp %{_builddir}/mutt-1.14.0/COPYRIGHT %{buildroot}/usr/share/package-licenses/mutt/9a05e4157c80d693ee0e8b9427a3b5c3176ed697
 %make_install
 %find_lang mutt
 ## install_append content
