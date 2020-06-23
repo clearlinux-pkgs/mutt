@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xADEF768480316BDA (kevin@8t8.us)
 #
 Name     : mutt
-Version  : 1.14.4
-Release  : 63
-URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.14.4.tar.gz
-Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.14.4.tar.gz
-Source1  : ftp://ftp.mutt.org/pub/mutt/mutt-1.14.4.tar.gz.asc
+Version  : 1.14.5
+Release  : 64
+URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.14.5.tar.gz
+Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.14.5.tar.gz
+Source1  : ftp://ftp.mutt.org/pub/mutt/mutt-1.14.5.tar.gz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -18,19 +18,22 @@ Requires: mutt-info = %{version}-%{release}
 Requires: mutt-license = %{version}-%{release}
 Requires: mutt-locales = %{version}-%{release}
 Requires: mutt-man = %{version}-%{release}
+BuildRequires : OpenSP
 BuildRequires : bison
 BuildRequires : cyrus-sasl-dev
-BuildRequires : gdb
+BuildRequires : docbook-utils
 BuildRequires : gdbm
 BuildRequires : gnupg
 BuildRequires : idna
 BuildRequires : krb5-dev
 BuildRequires : libidn-dev
+BuildRequires : lynx
 BuildRequires : ncurses-dev
 BuildRequires : pkgconfig(com_err)
 BuildRequires : pkgconfig(gnutls)
 BuildRequires : pkgconfig(tokyocabinet)
 BuildRequires : pkgconfig(zlib)
+BuildRequires : texinfo
 
 %description
 When updating mutt from an earlier release or from Git, please
@@ -96,15 +99,15 @@ man components for the mutt package.
 
 
 %prep
-%setup -q -n mutt-1.14.4
-cd %{_builddir}/mutt-1.14.4
+%setup -q -n mutt-1.14.5
+cd %{_builddir}/mutt-1.14.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1592537805
+export SOURCE_DATE_EPOCH=1592948922
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -133,10 +136,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1592537805
+export SOURCE_DATE_EPOCH=1592948922
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mutt
-cp %{_builddir}/mutt-1.14.4/COPYRIGHT %{buildroot}/usr/share/package-licenses/mutt/9a05e4157c80d693ee0e8b9427a3b5c3176ed697
+cp %{_builddir}/mutt-1.14.5/COPYRIGHT %{buildroot}/usr/share/package-licenses/mutt/9a05e4157c80d693ee0e8b9427a3b5c3176ed697
 %make_install
 %find_lang mutt
 ## install_append content

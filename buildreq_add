@@ -1,8 +1,15 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
-gnupg
-gdb
-libidn-dev
-idna
-gdbm
+OpenSP
+bison
 cyrus-sasl-dev
+docbook-utils
+gdbm
+gnupg
+idna
+lynx
+krb5-dev
+libidn-dev
+ncurses-dev
+pkgconfig(zlib)
+texinfo

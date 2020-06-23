@@ -1,5 +1,0 @@
-1.14.4
-bison
-krb5-dev
-ncurses-dev
-pkgconfig(zlib)
