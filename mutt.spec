@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xADEF768480316BDA (kevin@8t8.us)
 #
 Name     : mutt
-Version  : 1.14.5
-Release  : 64
-URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.14.5.tar.gz
-Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.14.5.tar.gz
-Source1  : ftp://ftp.mutt.org/pub/mutt/mutt-1.14.5.tar.gz.asc
+Version  : 1.14.6
+Release  : 65
+URL      : ftp://ftp.mutt.org/pub/mutt/mutt-1.14.6.tar.gz
+Source0  : ftp://ftp.mutt.org/pub/mutt/mutt-1.14.6.tar.gz
+Source1  : ftp://ftp.mutt.org/pub/mutt/mutt-1.14.6.tar.gz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -99,15 +99,15 @@ man components for the mutt package.
 
 
 %prep
-%setup -q -n mutt-1.14.5
-cd %{_builddir}/mutt-1.14.5
+%setup -q -n mutt-1.14.6
+cd %{_builddir}/mutt-1.14.6
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1592948922
+export SOURCE_DATE_EPOCH=1594663913
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -136,10 +136,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1592948922
+export SOURCE_DATE_EPOCH=1594663913
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mutt
-cp %{_builddir}/mutt-1.14.5/COPYRIGHT %{buildroot}/usr/share/package-licenses/mutt/9a05e4157c80d693ee0e8b9427a3b5c3176ed697
+cp %{_builddir}/mutt-1.14.6/COPYRIGHT %{buildroot}/usr/share/package-licenses/mutt/9a05e4157c80d693ee0e8b9427a3b5c3176ed697
 %make_install
 %find_lang mutt
 ## install_append content
