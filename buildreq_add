@@ -11,5 +11,4 @@ lynx
 krb5-dev
 libidn-dev
 ncurses-dev
-pkgconfig(zlib)
 texinfo
