@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xADEF768480316BDA (kevin@8t8.us)
 #
 Name     : mutt
-Version  : 2.0.5
-Release  : 72
-URL      : https://bitbucket.org/mutt/mutt/downloads/mutt-2.0.5.tar.gz
-Source0  : https://bitbucket.org/mutt/mutt/downloads/mutt-2.0.5.tar.gz
-Source1  : https://bitbucket.org/mutt/mutt/downloads/mutt-2.0.5.tar.gz.asc
+Version  : 2.0.6
+Release  : 73
+URL      : https://bitbucket.org/mutt/mutt/downloads/mutt-2.0.6.tar.gz
+Source0  : https://bitbucket.org/mutt/mutt/downloads/mutt-2.0.6.tar.gz
+Source1  : https://bitbucket.org/mutt/mutt/downloads/mutt-2.0.6.tar.gz.asc
 Summary  : Text-based mail client
 Group    : Development/Tools
 License  : GPL-2.0
@@ -100,15 +100,15 @@ man components for the mutt package.
 
 
 %prep
-%setup -q -n mutt-2.0.5
-cd %{_builddir}/mutt-2.0.5
+%setup -q -n mutt-2.0.6
+cd %{_builddir}/mutt-2.0.6
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1611263833
+export SOURCE_DATE_EPOCH=1615218718
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -137,10 +137,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1611263833
+export SOURCE_DATE_EPOCH=1615218718
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mutt
-cp %{_builddir}/mutt-2.0.5/COPYRIGHT %{buildroot}/usr/share/package-licenses/mutt/36ba45937c7ef0f178869ef07a53fa0ea8a7cf4e
+cp %{_builddir}/mutt-2.0.6/COPYRIGHT %{buildroot}/usr/share/package-licenses/mutt/36ba45937c7ef0f178869ef07a53fa0ea8a7cf4e
 %make_install
 %find_lang mutt
 ## install_append content
