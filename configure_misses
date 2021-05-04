@@ -1,26 +1,27 @@
-Configure miss: dbx
-Configure miss: gdb
-Configure miss: sdb
-Configure miss: whether to build with GPGME support
-Configure miss: ispell
-Configure miss: initscr
-Configure miss: waddnwstr in -lncurses
-Configure miss: ncursesw/ncurses.h usability
-Configure miss: ncursesw/ncurses.h presence
-Configure miss: ncursesw/ncurses.h
-Configure miss: ioctl.h usability
-Configure miss: ioctl.h presence
-Configure miss: ioctl.h
-Configure miss: unix.h usability
-Configure miss: unix.h presence
-Configure miss: unix.h
-Configure miss: whether your system's regexp library is completely broken
-Configure miss: if /var/spool/mail/ is world writable
-Configure miss: if /var/spool/mail/ is group writable
-Configure miss: whether iconv is non-transcribing
-Configure miss: idna_to_unicode_utf8_from_utf8
-Configure miss: idna_to_ascii_from_utf8
-Configure miss: idna_to_ascii_from_locale
-Configure miss: openjade docbook stylesheets
-Configure miss: docbook2x-texi
 Configure miss: db2x_docbook2texi
+Configure miss: dbx
+Configure miss: docbook2x-texi
+Configure miss: gdb
+Configure miss: idna_to_ascii_from_locale
+Configure miss: idna_to_ascii_from_utf8
+Configure miss: idna_to_unicode_utf8_from_utf8
+Configure miss: if /var/spool/mail/ is group writable
+Configure miss: if /var/spool/mail/ is world writable
+Configure miss: initscr
+Configure miss: ioctl.h
+Configure miss: ioctl.h presence
+Configure miss: ioctl.h usability
+Configure miss: ispell
+Configure miss: ncursesw/ncurses.h
+Configure miss: ncursesw/ncurses.h presence
+Configure miss: ncursesw/ncurses.h usability
+Configure miss: openjade docbook stylesheets
+Configure miss: sdb
+Configure miss: unix.h
+Configure miss: unix.h presence
+Configure miss: unix.h usability
+Configure miss: waddnwstr in -lncurses
+Configure miss: whether iconv is non-transcribing
+Configure miss: whether sys_siglist is declared
+Configure miss: whether to build with GPGME support
+Configure miss: whether your system's regexp library is completely broken
