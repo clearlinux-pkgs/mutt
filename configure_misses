@@ -1,3 +1,5 @@
+Configure miss: 32-bit host C ABI
+Configure miss: CFLocaleCopyPreferredLanguages
 Configure miss: db2x_docbook2texi
 Configure miss: dbx
 Configure miss: docbook2x-texi
@@ -12,6 +14,9 @@ Configure miss: ioctl.h
 Configure miss: ioctl.h presence
 Configure miss: ioctl.h usability
 Configure miss: ispell
+Configure miss: kclangc.h
+Configure miss: kclangc.h presence
+Configure miss: kclangc.h usability
 Configure miss: ncursesw/ncurses.h
 Configure miss: ncursesw/ncurses.h presence
 Configure miss: ncursesw/ncurses.h usability
