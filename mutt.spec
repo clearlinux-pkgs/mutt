@@ -6,7 +6,7 @@
 #
 Name     : mutt
 Version  : 2.2.2
-Release  : 83
+Release  : 84
 URL      : https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.2.tar.gz
 Source0  : https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.2.tar.gz
 Source1  : https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.2.tar.gz.asc
@@ -24,7 +24,6 @@ BuildRequires : cyrus-sasl-dev
 BuildRequires : docbook-utils
 BuildRequires : gdbm
 BuildRequires : gnupg
-BuildRequires : idna
 BuildRequires : krb5-dev
 BuildRequires : libidn-dev
 BuildRequires : lynx
@@ -33,6 +32,7 @@ BuildRequires : pkgconfig(com_err)
 BuildRequires : pkgconfig(gnutls)
 BuildRequires : pkgconfig(tokyocabinet)
 BuildRequires : pkgconfig(zlib)
+BuildRequires : pypi-idna
 BuildRequires : texinfo
 
 %description
@@ -108,7 +108,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1648352458
+export SOURCE_DATE_EPOCH=1649774358
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -137,7 +137,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1648352458
+export SOURCE_DATE_EPOCH=1649774358
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mutt
 cp %{_builddir}/mutt-2.2.2/COPYRIGHT %{buildroot}/usr/share/package-licenses/mutt/84ed08b606e0b21c6151551578ec8c9bbd336340

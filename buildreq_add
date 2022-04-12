@@ -6,7 +6,7 @@ cyrus-sasl-dev
 docbook-utils
 gdbm
 gnupg
-idna
+pypi-idna
 lynx
 krb5-dev
 libidn-dev
