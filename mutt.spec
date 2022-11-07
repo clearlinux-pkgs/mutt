@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xADEF768480316BDA (kevin@8t8.us)
 #
 Name     : mutt
-Version  : 2.2.7
-Release  : 89
-URL      : https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.7.tar.gz
-Source0  : https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.7.tar.gz
-Source1  : https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.7.tar.gz.asc
+Version  : 2.2.8
+Release  : 90
+URL      : https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.8.tar.gz
+Source0  : https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.8.tar.gz
+Source1  : https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.8.tar.gz.asc
 Summary  : Text-based mail client
 Group    : Development/Tools
 License  : GPL-2.0
@@ -100,23 +100,23 @@ man components for the mutt package.
 
 
 %prep
-%setup -q -n mutt-2.2.7
-cd %{_builddir}/mutt-2.2.7
+%setup -q -n mutt-2.2.8
+cd %{_builddir}/mutt-2.2.8
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1659969404
+export SOURCE_DATE_EPOCH=1667841477
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
-export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
-export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
-export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -mprefer-vector-width=256 "
+export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition "
 %configure --disable-static --with-mailpath=/var/spool/mail/ \
 --enable-imap \
 --enable-pop \
@@ -137,10 +137,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1659969404
+export SOURCE_DATE_EPOCH=1667841477
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/mutt
-cp %{_builddir}/mutt-%{version}/COPYRIGHT %{buildroot}/usr/share/package-licenses/mutt/84ed08b606e0b21c6151551578ec8c9bbd336340
+cp %{_builddir}/mutt-%{version}/COPYRIGHT %{buildroot}/usr/share/package-licenses/mutt/84ed08b606e0b21c6151551578ec8c9bbd336340 || :
 %make_install
 %find_lang mutt
 ## install_append content
