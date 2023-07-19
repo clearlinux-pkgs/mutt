@@ -4,6 +4,5 @@ libgssapi_krb5.so.2
 libidn.so.12
 libncursesw.so.6
 libsasl2.so.3
-libtinfow.so.6
 libtokyocabinet.so.9
 libz.so.1

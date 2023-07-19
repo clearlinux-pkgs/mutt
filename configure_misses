@@ -14,11 +14,10 @@ Configure miss: initscr
 Configure miss: ioctl.h
 Configure miss: ispell
 Configure miss: kclangc.h
-Configure miss: ncursesw/ncurses.h
+Configure miss: ncurses/ncurses.h
 Configure miss: openjade docbook stylesheets
 Configure miss: sdb
 Configure miss: unix.h
-Configure miss: waddnwstr in -lncurses
 Configure miss: whether iconv is non-transcribing
 Configure miss: whether sys_siglist is declared
 Configure miss: whether to build with GPGME support
