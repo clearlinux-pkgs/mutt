@@ -1,24 +1,48 @@
 Configure miss: 32-bit host C ABI
+Configure miss: 32-bit host C ABI
+Configure miss: CFLocaleCopyPreferredLanguages
 Configure miss: CFLocaleCopyPreferredLanguages
 Configure miss: db2x_docbook2texi
+Configure miss: db2x_docbook2texi
+Configure miss: dbx
 Configure miss: dbx
 Configure miss: docbook2x-texi
+Configure miss: docbook2x-texi
+Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: gdb
+Configure miss: gdb
+Configure miss: idna_to_ascii_from_locale
 Configure miss: idna_to_ascii_from_locale
 Configure miss: idna_to_ascii_from_utf8
+Configure miss: idna_to_ascii_from_utf8
+Configure miss: idna_to_unicode_utf8_from_utf8
 Configure miss: idna_to_unicode_utf8_from_utf8
 Configure miss: if /var/spool/mail/ is group writable
+Configure miss: if /var/spool/mail/ is group writable
+Configure miss: if /var/spool/mail/ is world writable
 Configure miss: if /var/spool/mail/ is world writable
 Configure miss: initscr
+Configure miss: initscr
+Configure miss: ioctl.h
 Configure miss: ioctl.h
 Configure miss: ispell
+Configure miss: ispell
+Configure miss: kclangc.h
 Configure miss: kclangc.h
 Configure miss: ncurses/ncurses.h
+Configure miss: ncurses/ncurses.h
+Configure miss: openjade docbook stylesheets
 Configure miss: openjade docbook stylesheets
 Configure miss: sdb
+Configure miss: sdb
+Configure miss: unix.h
 Configure miss: unix.h
 Configure miss: whether iconv is non-transcribing
+Configure miss: whether iconv is non-transcribing
+Configure miss: whether sys_siglist is declared
 Configure miss: whether sys_siglist is declared
 Configure miss: whether to build with GPGME support
+Configure miss: whether to build with GPGME support
+Configure miss: whether your system's regexp library is completely broken
 Configure miss: whether your system's regexp library is completely broken

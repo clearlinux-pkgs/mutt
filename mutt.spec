@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xADEF768480316BDA (kevin@8t8.us)
 #
 Name     : mutt
-Version  : 2.2.10
-Release  : 93
-URL      : https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.10.tar.gz
-Source0  : https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.10.tar.gz
-Source1  : https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.10.tar.gz.asc
+Version  : 2.2.11
+Release  : 94
+URL      : https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.11.tar.gz
+Source0  : https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.11.tar.gz
+Source1  : https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.11.tar.gz.asc
 Summary  : Text-based mail client
 Group    : Development/Tools
 License  : GPL-2.0
@@ -95,15 +95,18 @@ man components for the mutt package.
 
 
 %prep
-%setup -q -n mutt-2.2.10
-cd %{_builddir}/mutt-2.2.10
+%setup -q -n mutt-2.2.11
+cd %{_builddir}/mutt-2.2.11
+pushd ..
+cp -a mutt-2.2.11 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1689787605
+export SOURCE_DATE_EPOCH=1692371153
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -124,27 +127,55 @@ export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section
 --enable-debug
 make  %{?_smp_mflags}
 
+unset PKG_CONFIG_PATH
+pushd ../buildavx2/
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3"
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3"
+export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3"
+export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3"
+export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3"
+%configure --disable-static --with-mailpath=/var/spool/mail/ \
+--enable-imap \
+--enable-pop \
+--enable-smtp \
+--with-gss \
+--with-gnutls \
+--with-sasl \
+--enable-sidebar \
+--enable-hcache \
+--enable-debug
+make  %{?_smp_mflags}
+popd
 %check
 export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
+cd ../buildavx2;
+make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1689787605
+export SOURCE_DATE_EPOCH=1692371153
 rm -rf %{buildroot}
+pushd ../buildavx2/
+%make_install_v3
+popd
 %make_install
 %find_lang mutt
 ## install_append content
 ln -s mutt %{buildroot}%{_bindir}/mail
 ## install_append end
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
 
 %files bin
 %defattr(-,root,root,-)
+/V3/usr/bin/mutt
+/V3/usr/bin/mutt_pgpring
+/V3/usr/bin/pgpewrap
 /usr/bin/flea
 /usr/bin/mail
 /usr/bin/mutt
