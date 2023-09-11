@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xADEF768480316BDA (kevin@8t8.us)
 #
 Name     : mutt
-Version  : 2.2.11
-Release  : 94
-URL      : https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.11.tar.gz
-Source0  : https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.11.tar.gz
-Source1  : https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.11.tar.gz.asc
+Version  : 2.2.12
+Release  : 95
+URL      : https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.12.tar.gz
+Source0  : https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.12.tar.gz
+Source1  : https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.12.tar.gz.asc
 Summary  : Text-based mail client
 Group    : Development/Tools
 License  : GPL-2.0
@@ -95,10 +95,10 @@ man components for the mutt package.
 
 
 %prep
-%setup -q -n mutt-2.2.11
-cd %{_builddir}/mutt-2.2.11
+%setup -q -n mutt-2.2.12
+cd %{_builddir}/mutt-2.2.12
 pushd ..
-cp -a mutt-2.2.11 buildavx2
+cp -a mutt-2.2.12 buildavx2
 popd
 
 %build
@@ -106,7 +106,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1692371153
+export SOURCE_DATE_EPOCH=1694443094
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -156,7 +156,7 @@ cd ../buildavx2;
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1692371153
+export SOURCE_DATE_EPOCH=1694443094
 rm -rf %{buildroot}
 pushd ../buildavx2/
 %make_install_v3
