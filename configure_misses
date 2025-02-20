@@ -8,6 +8,8 @@ Configure miss: dbx
 Configure miss: dbx
 Configure miss: docbook2x-texi
 Configure miss: docbook2x-texi
+Configure miss: gcc option to enable large file support
+Configure miss: gcc option to enable large file support
 Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: gdb
@@ -38,8 +40,6 @@ Configure miss: sdb
 Configure miss: sdb
 Configure miss: unix.h
 Configure miss: unix.h
-Configure miss: whether iconv is non-transcribing
-Configure miss: whether iconv is non-transcribing
 Configure miss: whether sys_siglist is declared
 Configure miss: whether sys_siglist is declared
 Configure miss: whether to build with GPGME support
